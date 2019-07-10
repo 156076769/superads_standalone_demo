@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="item_titles">
+        <item>MacBook</item>
+        <item>MacBook Air 13-inch</item>
+        <item>MacBook Touch</item>
+        <item>MacBook Pro 13-inch</item>
+        <item>MacBook</item>
+        <item>MacBook Air 13-inch</item>
+        <item>MacBook Touch</item>
+        <item>MacBook Pro 13-inch</item>
+        <item>MacBook</item>
+        <item>MacBook Air 13-inch</item>
+        <item>MacBook Touch</item>
+        <item>MacBook Pro 13-inch</item>
+        <item>MacBook</item>
+        <item>MacBook Air 13-inch</item>
+        <item>MacBook Touch</item>
+        <item>MacBook Pro 13-inch</item>
+    </string-array>
+
+    <string-array name="item_descriptions">
+        <item>12-inch (diagonal) LED-backit Retina display…</item>
+        <item>13.3-inch (diagonal) LED-backit widescreen display…</item>
+        <item>Touch ID…</item>
+        <item>13-inch (diagonal) LED-backit Retina display…</item>
+        <item>12-inch (diagonal) LED-backit Retina display…</item>
+        <item>13.3-inch (diagonal) LED-backit widescreen display…</item>
+        <item>Touch ID…</item>
+        <item>13-inch (diagonal) LED-backit Retina display…</item>
+        <item>12-inch (diagonal) LED-backit Retina display…</item>
+        <item>13.3-inch (diagonal) LED-backit widescreen display…</item>
+        <item>Touch ID…</item>
+        <item>13-inch (diagonal) LED-backit Retina display…</item>
+        <item>12-inch (diagonal) LED-backit Retina display…</item>
+        <item>13.3-inch (diagonal) LED-backit widescreen display…</item>
+        <item>Touch ID…</item>
+        <item>13-inch (diagonal) LED-backit Retina display…</item>
+    </string-array>
+
+</resources>
