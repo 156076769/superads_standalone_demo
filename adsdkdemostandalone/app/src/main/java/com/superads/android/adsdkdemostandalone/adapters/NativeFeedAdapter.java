@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.superads.android.adsdkdemostandalone.R;
 import com.superads.android.adsdkdemostandalone.models.DataType;
@@ -16,6 +17,7 @@ import com.superads.android.adsdk.ads.providers.SuperAds;
 import com.superads.android.adsdk.ads.providers.models.NativeAdRequest;
 import com.superads.android.adsdk.ads.rendering.view.AdListener;
 import com.superads.android.adsdk.ads.rendering.view.NativeAdLoader;
+import com.superads.android.adsdkdemostandalone.viewholders.NativeSimpleViewHolder;
 
 import java.util.List;
 
@@ -44,11 +46,11 @@ public class NativeFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         View v;
         if (viewType == NORMAL) {
             v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.native_feed_item, parent, false);
-            return new NativeFeedDataViewHolder(v);
+                    .inflate(R.layout.native_simple_item, parent, false);
+            return new NativeSimpleViewHolder(v);
         } else {
             v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.native_banner_ad, parent, false);
+                    .inflate(R.layout.native_ad_container, parent, false);
             final View adView = LayoutInflater.from(parent.getContext()).inflate(R.layout.native_ad_example_feed_ad, null);
             NativeAdRequest.Builder builder = new NativeAdRequest.Builder(adView, SuperAds.genRandomPlacementId())
                     .titleTextViewId(R.id.ad_txt_title)
@@ -66,6 +68,8 @@ public class NativeFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 @Override
                 public void onAdFailedToLoad(int errorCode) {
                     Log.e("NativeFeedAdapter", "error generating ad, error code=" + errorCode);
+                    Toast.makeText(parent.getContext(), "No Native Ads loaded", Toast.LENGTH_SHORT).show();
+                    v.setVisibility(View.GONE);
                 }
             });
             return new NativeAdViewHolder(v,adView);
@@ -76,7 +80,7 @@ public class NativeFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         NativeData data = list.get(position);
         if (data.getType() == DataType.NORMAL) {
-            ((NativeFeedDataViewHolder) holder).bindData(data);
+            ((NativeSimpleViewHolder) holder).bindData(data);
         }
     }
 

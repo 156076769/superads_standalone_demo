@@ -2,6 +2,7 @@ package com.superads.android.adsdkdemostandalone.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -29,6 +30,7 @@ public class NativeActivity extends Activity {
         reycler = findViewById(R.id.recycler);
         reycler.setHasFixedSize(true);
         reycler.setLayoutManager(new LinearLayoutManager(this));
+        reycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         if (getIntent().hasExtra("adType")) {
             DataType adType = (DataType) getIntent().getSerializableExtra("adType");
             switch (adType) {
@@ -68,7 +70,8 @@ public class NativeActivity extends Activity {
 
     private void setNativeFeedRecyclerData() {
         List<NativeData> items = new ArrayList<>();
-        int[] imageRes = {R.drawable.product2, R.drawable.product3};
+        int[] imageRes = {R.drawable.product2, R.drawable.product3, R.drawable.product2, R.drawable.product3,
+                R.drawable.product2, R.drawable.product3, R.drawable.product2, R.drawable.product3};
         for (int imageRe : imageRes) {
             NativeData data = new NativeData();
             data.setImgRes(imageRe);
