@@ -4,18 +4,22 @@
     package="com.superads.android.adsdkdemostandalone">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
-        android:allowBackup="true"
+        android:name=".App"
         android:icon="@mipmap/ic_launcher"
+        android:allowBackup="true"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name="com.superads.android.adsdkdemostandalone.activities.NativeActivity"></activity>
-
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity android:name="com.superads.android.adsdkdemostandalone.activities.NativeActivity" />
+        <activity android:name="com.superads.android.adsdkdemostandalone.activities.NativeExamplesActivity" />
+        <activity android:name="com.superads.android.adsdkdemostandalone.activities.BannerActivity" />
+        <activity android:name="com.superads.android.adsdkdemostandalone.activities.InterstitialActivity" />
+        <activity android:name="com.superads.android.adsdkdemostandalone.activities.VideoActivity" />
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="a9687406efb69fe00b6329e2c4a1c55dc066b98f" />

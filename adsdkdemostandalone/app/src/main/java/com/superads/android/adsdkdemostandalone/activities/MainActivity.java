@@ -3,161 +3,102 @@ package com.superads.android.adsdkdemostandalone.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.superads.android.adsdkdemostandalone.App;
 import com.superads.android.adsdkdemostandalone.R;
+import com.superads.android.adsdkdemostandalone.adapters.NativeBannerAdapter;
+import com.superads.android.adsdkdemostandalone.adapters.NativeFeedAdapter;
 import com.superads.android.adsdkdemostandalone.models.DataType;
-import com.superads.android.adsdk.ads.providers.SuperAds;
-import com.superads.android.adsdk.ads.providers.SuperAdsConfig;
-import com.superads.android.adsdk.ads.providers.models.AdRequest;
-import com.superads.android.adsdk.ads.rendering.view.AdListener;
-import com.superads.android.adsdk.ads.rendering.view.AdView;
-import com.superads.android.adsdk.ads.rendering.view.InterstitialAdLoader;
-import com.superads.android.adsdk.ads.rendering.view.VideoAdLoader;
+import com.superads.android.adsdkdemostandalone.models.NativeData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private InterstitialAdLoader interstitialAd;
-    private ViewGroup bannerContainer;
-    private VideoAdLoader videoAd;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //CrashReport.setUserId(DeviceAddressUtil.getMACAddress("wlan0"));
-
         setContentView(R.layout.activity_main);
-        initActivityButtons();
 
-        View btnVideo = findViewById(R.id.btn_video);
-        btnVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AdRequest.Builder builder = new AdRequest.Builder(SuperAds.genRandomPlacementId());
-                videoAd = new VideoAdLoader(MainActivity.this);
-                videoAd.loadAd(builder.build(), new AdListener() {
-                    @Override
-                    public void onAdLoaded() {
-                        videoAd.show();
-                    }
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(new MyAdapter());
 
-                    @Override
-                    public void onAdFailedToLoad(int errorCode) {
-                    }
-                });
-            }
-        });
-
-        View forceCrashButton = findViewById(R.id.force_crash);
-        forceCrashButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Object a = null;
-//                Log.d("MainActivity", a.toString());
-            }
-        });
-
-        SuperAdsConfig.debug = true;
-        SuperAds.init(this, "1069", "27");
+        TextView tv1 = findViewById(R.id.tv1);
+        tv1.setText("" +
+                "publisherId: " + App.publisherId + "\n" +
+                "appId: " + App.appId + "\n" +
+                "");
     }
 
-    private void createAndShowBanner() {
-        final AdView adView = new AdView(this);
-        AdRequest.Builder builder = new AdRequest.Builder(SuperAds.genRandomPlacementId());
-        adView.loadAd(builder.build(), new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                bannerContainer.addView(adView);
-            }
+    public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                Log.e("MainActivity", "error generating ad, error code=" + errorCode);
-            }
-        });
+        @NonNull
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            View v = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.item_view, viewGroup, false);
+            return new MyViewHolder(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+            ((MyViewHolder) viewHolder).bindData(i);
+        }
+
+        @Override
+        public int getItemCount() {
+            return data.length;
+        }
     }
 
-    private void createAndShowInterstitial() {
-        AdRequest.Builder builder = new AdRequest.Builder(SuperAds.genRandomPlacementId());
-        this.interstitialAd = new InterstitialAdLoader(this);
-        interstitialAd.loadAd(builder.build(), new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                interstitialAd.show();
+
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView tv;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tv = itemView.findViewById(R.id.tv1);
+        }
+
+        public void bindData(int i) {
+            tv.setText(data[i]);
+            final Class target;
+            if (i == 0) {
+                target = BannerActivity.class;
+            } else if (i == 1) {
+                target = InterstitialActivity.class;
+            } else if (i == 2) {
+                target = NativeExamplesActivity.class;
+            } else if (i == 3) {
+                target = VideoActivity.class;
+            } else{
+                target = null;
             }
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(MainActivity.this, target);
+                    MainActivity.this.startActivity(i);
+                }
+            });
 
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                Log.e("MainActivity", "error generating ad, error code=" + errorCode);
-            }
-
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-            }
-        });
+        }
     }
 
-    private void createAndShowNativeBanner() {
-        Intent intent = new Intent(this,NativeActivity.class);
-        intent.putExtra("adType", DataType.NATIVE_BANNER);
-        startActivity(intent);
-    }
+    String[] data = {"Banner", "Interstitial", "Native", "Video"};
 
-    private void createAndShowFeedNative() {
-        Intent intent = new Intent(this,NativeActivity.class);
-        intent.putExtra("adType", DataType.NATIVE_FEED);
-        startActivity(intent);
-    }
-
-    private void initActivityButtons() {
-        bannerContainer = findViewById(R.id.card_banner);
-        initLoadAndShowInterstitialButton();
-        initLoadAndShowBannerButton();
-        initLoadAndShowNativeBannerButton();
-        initLoadAndShowNativeFeedButton();
-    }
-
-    private void initLoadAndShowBannerButton() {
-        View btnBanner = findViewById(R.id.btn_banner);
-        btnBanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createAndShowBanner();
-            }
-        });
-    }
-
-    private void initLoadAndShowInterstitialButton() {
-        View btnInterstitial = findViewById(R.id.btn_interstitial);
-        btnInterstitial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createAndShowInterstitial();
-            }
-        });
-    }
-
-    private void initLoadAndShowNativeBannerButton() {
-        View btnBanner = findViewById(R.id.btn_native_banner);
-        btnBanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createAndShowNativeBanner();
-            }
-        });
-    }
-
-    private void initLoadAndShowNativeFeedButton() {
-        View btnBanner = findViewById(R.id.btn_native_feed);
-        btnBanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createAndShowFeedNative();
-            }
-        });
-    }
 }
