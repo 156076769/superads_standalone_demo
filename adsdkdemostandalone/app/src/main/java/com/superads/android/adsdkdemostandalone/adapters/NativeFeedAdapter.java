@@ -12,7 +12,6 @@ import com.superads.android.adsdkdemostandalone.R;
 import com.superads.android.adsdkdemostandalone.models.DataType;
 import com.superads.android.adsdkdemostandalone.models.NativeData;
 import com.superads.android.adsdkdemostandalone.viewholders.NativeAdViewHolder;
-import com.superads.android.adsdkdemostandalone.viewholders.NativeFeedDataViewHolder;
 import com.superads.android.adsdk.ads.providers.SuperAds;
 import com.superads.android.adsdk.ads.providers.models.NativeAdRequest;
 import com.superads.android.adsdk.ads.rendering.view.AdListener;
