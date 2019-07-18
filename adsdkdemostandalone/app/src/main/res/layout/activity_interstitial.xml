@@ -15,7 +15,7 @@
 
                 <Button
                     android:id="@+id/btn_load"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/button_background"

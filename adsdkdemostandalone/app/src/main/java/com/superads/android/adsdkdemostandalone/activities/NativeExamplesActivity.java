@@ -8,7 +8,7 @@ import android.view.View;
 import com.superads.android.adsdkdemostandalone.R;
 import com.superads.android.adsdkdemostandalone.models.DataType;
 
-public class NativeExamplesActivity extends Activity {
+public class NativeExamplesActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

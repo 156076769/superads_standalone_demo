@@ -14,7 +14,7 @@ import com.superads.android.adsdk.ads.rendering.view.InterstitialAdLoader;
 import com.superads.android.adsdk.ads.rendering.view.VideoAdLoader;
 import com.superads.android.adsdkdemostandalone.R;
 
-public class VideoActivity extends Activity {
+public class VideoActivity extends BaseActivity {
 
     private VideoAdLoader videoAdLoader;
 

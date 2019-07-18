@@ -45,7 +45,7 @@ public class NativeFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         View v;
         if (viewType == NORMAL) {
             v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.native_simple_item, parent, false);
+                    .inflate(R.layout.native_simple_item_big, parent, false);
             return new NativeSimpleViewHolder(v);
         } else {
             v = LayoutInflater.from(parent.getContext())

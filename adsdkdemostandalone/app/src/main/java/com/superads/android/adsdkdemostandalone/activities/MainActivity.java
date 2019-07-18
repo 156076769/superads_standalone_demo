@@ -22,7 +22,7 @@ import com.superads.android.adsdkdemostandalone.models.NativeData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
 

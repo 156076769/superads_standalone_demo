@@ -11,4 +11,5 @@
     <color name="normal">#b72544</color>
     <color name="pressed">#a0153a</color>
     <color name="title">#283149</color>
+    <color name="colorStatus">#c20f2a</color>
 </resources>

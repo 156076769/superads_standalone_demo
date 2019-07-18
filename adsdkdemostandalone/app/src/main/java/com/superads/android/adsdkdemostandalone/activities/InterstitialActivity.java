@@ -13,7 +13,7 @@ import com.superads.android.adsdk.ads.rendering.view.AdListener;
 import com.superads.android.adsdk.ads.rendering.view.InterstitialAdLoader;
 import com.superads.android.adsdkdemostandalone.R;
 
-public class InterstitialActivity extends Activity {
+public class InterstitialActivity extends BaseActivity {
 
     private InterstitialAdLoader interstitialAd;
 
