@@ -70,11 +70,8 @@ public class NativeActivity extends BaseActivity {
 
     private void setNativeFeedRecyclerData() {
         List<NativeData> items = new ArrayList<>();
-        int[] imageRes = {R.drawable.product2, R.drawable.product3, R.drawable.product2, R.drawable.product3,
-                R.drawable.product2, R.drawable.product3, R.drawable.product2, R.drawable.product3};
-        for (int imageRe : imageRes) {
+        for (int i = 0; i < 10; i++) {
             NativeData data = new NativeData();
-            data.setImgRes(imageRe);
             data.setType(DataType.NORMAL);
             items.add(data);
         }

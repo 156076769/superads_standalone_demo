@@ -1,6 +1,5 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.Toast;
 import com.superads.android.adsdk.ads.providers.SuperAds;
 import com.superads.android.adsdk.ads.providers.models.AdRequest;
 import com.superads.android.adsdk.ads.rendering.view.AdListener;
-import com.superads.android.adsdk.ads.rendering.view.InterstitialAdLoader;
 import com.superads.android.adsdk.ads.rendering.view.VideoAdLoader;
 import com.superads.android.adsdkdemostandalone.R;
 

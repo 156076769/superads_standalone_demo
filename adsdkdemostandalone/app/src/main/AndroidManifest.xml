@@ -7,35 +7,40 @@
 
     <application
         android:name=".App"
-        android:icon="@mipmap/ic_launcher_round"
         android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name="com.superads.android.adsdkdemostandalone.activities.NativeActivity" />
-        <activity android:name="com.superads.android.adsdkdemostandalone.activities.NativeExamplesActivity" />
-        <activity android:name="com.superads.android.adsdkdemostandalone.activities.BannerActivity" />
-        <activity android:name="com.superads.android.adsdkdemostandalone.activities.InterstitialActivity" />
-        <activity android:name="com.superads.android.adsdkdemostandalone.activities.VideoActivity" />
-        <activity android:name="com.superads.android.adsdkdemostandalone.activities.WebActivity" />
+        <activity android:name=".activities.PlayableExamplesActivity"></activity>
+        <activity android:name=".activities.NativeActivity" />
+        <activity android:name=".activities.NativeExamplesActivity" />
+        <activity android:name=".activities.BannerActivity" />
+        <activity android:name=".activities.InterstitialActivity" />
+        <activity android:name=".activities.VideoActivity" />
+        <activity android:name=".activities.PlayableActivity" />
+        <activity
+            android:name=".activities.PlayableLandscapeActivity"
+            android:screenOrientation="landscape" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="a9687406efb69fe00b6329e2c4a1c55dc066b98f" />
 
-        <activity
-            android:name="com.superads.android.adsdkdemostandalone.activities.MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4188067984264853~9551666862"/>
+            android:value="ca-app-pub-4188067984264853~9551666862" />
     </application>
 
 </manifest>

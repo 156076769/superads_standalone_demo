@@ -1,28 +1,29 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.Resource;
 import com.superads.android.adsdkdemostandalone.App;
 import com.superads.android.adsdkdemostandalone.R;
-import com.superads.android.adsdkdemostandalone.adapters.NativeBannerAdapter;
-import com.superads.android.adsdkdemostandalone.adapters.NativeFeedAdapter;
-import com.superads.android.adsdkdemostandalone.models.DataType;
-import com.superads.android.adsdkdemostandalone.models.NativeData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends BaseActivity {
+
+    private final String TAG = MainActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
 
@@ -38,10 +39,22 @@ public class MainActivity extends BaseActivity {
         recyclerView.setAdapter(new MyAdapter());
 
         TextView tv1 = findViewById(R.id.tv1);
-        tv1.setText("" +
-                "publisherId: " + App.publisherId + "\n" +
-                "appId: " + App.appId + "\n" +
-                "");
+        tv1.setText("SuperADS Demo");
+
+        Log.d(TAG, "publisherId: " + App.publisherId + "\n" +
+                "appId: " + App.appId + "\n");
+
+        tv1.setText("publisherId: " + App.publisherId + "\n" +
+                "appId: " + App.appId + "\n");
+
+//        Bitmap bmp= BitmapFactory.decodeResource(getResources(), R.id.logo);
+//        int bwidht=bmp.getWidth();
+//        int bheight=bmp.getHeight();
+//        Matrix matrix = new Matrix();
+//        matrix.postScale((float)0.5,(float)0.5); //长和宽放大缩小的比例
+//        final Bitmap newb = Bitmap.createBitmap(bmp,0,0,bwidht, bheight,matrix,true );
+//        ImageView imageView = findViewById(R.id.logo);
+//        imageView.setImageBitmap(newb);
     }
 
     public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -74,33 +87,39 @@ public class MainActivity extends BaseActivity {
             tv = itemView.findViewById(R.id.tv1);
         }
 
+        Class target;
+        Intent intent;
         public void bindData(int i) {
             tv.setText(data[i]);
-            final Class target;
+            target = null;
             if (i == 0) {
-                target = BannerActivity.class;
+                target = PlayableExamplesActivity.class;
+                intent = new Intent(MainActivity.this, target);
             } else if (i == 1) {
-                target = InterstitialActivity.class;
+                target = VideoActivity.class;
+                intent = new Intent(MainActivity.this, target);
             } else if (i == 2) {
                 target = NativeExamplesActivity.class;
+                intent = new Intent(MainActivity.this, target);
             } else if (i == 3) {
-                target = VideoActivity.class;
+                target = InterstitialActivity.class;
+                intent = new Intent(MainActivity.this, target);
             } else if (i == 4) {
-                target = WebActivity.class;
-            } else{
-                target = null;
+                target = BannerActivity.class;
+                intent = new Intent(MainActivity.this, target);
             }
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(MainActivity.this, target);
-                    MainActivity.this.startActivity(i);
+                    if (intent != null) {
+                        MainActivity.this.startActivity(intent);
+                    }
                 }
             });
 
         }
     }
 
-    String[] data = {"Banner", "Interstitial", "Native", "Video", "SuperStudio"};
+    String[] data = {"Playable", "Video", "Native", "Interstitial", "Banner", "", "Contact: monetize@superads.cn"};
 
 }

@@ -10,14 +10,14 @@ import android.webkit.WebView;
 
 import com.superads.android.adsdkdemostandalone.R;
 
-public class WebActivity extends Activity {
+public class StudioActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_playable);
 
         WebView webview1 = (WebView) findViewById(R.id.webview1);
         webview1.getSettings().setJavaScriptEnabled(true);
@@ -29,8 +29,6 @@ public class WebActivity extends Activity {
         //webview1.setPadding(0, 0, 0, 0);
         //webview1.setInitialScale(100);
 
-        //webview1.loadUrl("http://192.168.0.105:8080/x/");
-        //webview1.loadUrl("http://demo.gamewheel.com/collector/airplane/index.html");
         webview1.loadUrl("https://play.gamewheel.com/editor/superads/");
     }
 

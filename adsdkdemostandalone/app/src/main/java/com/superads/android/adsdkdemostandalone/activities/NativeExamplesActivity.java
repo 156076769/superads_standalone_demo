@@ -1,6 +1,5 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,7 @@ public class NativeExamplesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.native_examples);
+        setContentView(R.layout.activity_native_examples);
         initActivityButtons();
 
     }
