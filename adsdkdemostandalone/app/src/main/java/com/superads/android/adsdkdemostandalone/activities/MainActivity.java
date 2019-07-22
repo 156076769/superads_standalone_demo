@@ -85,6 +85,8 @@ public class MainActivity extends BaseActivity {
                 target = NativeExamplesActivity.class;
             } else if (i == 3) {
                 target = VideoActivity.class;
+            } else if (i == 4) {
+                target = WebActivity.class;
             } else{
                 target = null;
             }
@@ -99,6 +101,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    String[] data = {"Banner", "Interstitial", "Native", "Video"};
+    String[] data = {"Banner", "Interstitial", "Native", "Video", "SuperStudio"};
 
 }

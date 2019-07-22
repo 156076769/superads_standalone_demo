@@ -20,6 +20,7 @@
         <activity android:name="com.superads.android.adsdkdemostandalone.activities.BannerActivity" />
         <activity android:name="com.superads.android.adsdkdemostandalone.activities.InterstitialActivity" />
         <activity android:name="com.superads.android.adsdkdemostandalone.activities.VideoActivity" />
+        <activity android:name="com.superads.android.adsdkdemostandalone.activities.WebActivity" />
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="a9687406efb69fe00b6329e2c4a1c55dc066b98f" />

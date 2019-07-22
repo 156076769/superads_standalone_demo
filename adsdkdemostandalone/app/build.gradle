@@ -29,7 +29,7 @@ dependencies {
 
     //SuperADS广告SDK需要的
     implementation 'com.github.bumptech.glide:glide:4.9.0'
-    implementation 'com.superads.android:adsdk:0.0.8'
+    implementation 'com.superads.android:adsdk:0.0.9'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 }
