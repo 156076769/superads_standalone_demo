@@ -2,13 +2,14 @@ package com.superads.android.adsdkdemostandalone.activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.superads.android.adsdk.ads.providers.SuperAds;
 import com.superads.android.adsdk.ads.providers.models.AdRequest;
 import com.superads.android.adsdk.ads.rendering.view.AdListener;
-import com.superads.android.adsdk.ads.rendering.view.AdView;
+import com.superads.android.adsdk.ads.rendering.view.BannerAdView;
 import com.superads.android.adsdkdemostandalone.R;
 
 public class BannerActivity extends BaseActivity {
@@ -24,13 +25,12 @@ public class BannerActivity extends BaseActivity {
     private void initLoadAndShowBannerButton() {
         Button btnBanner = findViewById(R.id.btn_load);
         btnBanner.setOnClickListener(view -> {
-            final AdView adView = new AdView(BannerActivity.this);
+            final BannerAdView bannerAdView = findViewById(R.id.card_banner);
             AdRequest.Builder builder = new AdRequest.Builder(SuperAds.genRandomPlacementId());
-            adView.loadAd(builder.build(), new AdListener() {
+            bannerAdView.loadAd(builder.build(), new AdListener() {
                 @Override
                 public void onAdLoaded() {
-                    ViewGroup bannerContainer = BannerActivity.this.findViewById(R.id.card_banner);
-                    bannerContainer.addView(adView);
+                    bannerAdView.setVisibility(View.VISIBLE);
                 }
 
                 @Override

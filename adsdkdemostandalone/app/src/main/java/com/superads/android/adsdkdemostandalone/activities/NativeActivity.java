@@ -1,16 +1,19 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.superads.android.adsdk.ads.providers.SuperAds;
+import com.superads.android.adsdk.ads.providers.models.NativeAd;
+import com.superads.android.adsdk.ads.providers.models.NativeAdRequest;
+import com.superads.android.adsdk.ads.rendering.view.AdListener;
+import com.superads.android.adsdk.ads.rendering.view.NativeAdLoader;
 import com.superads.android.adsdkdemostandalone.R;
-import com.superads.android.adsdkdemostandalone.adapters.NativeBannerAdapter;
-import com.superads.android.adsdkdemostandalone.adapters.NativeFeedAdapter;
+import com.superads.android.adsdkdemostandalone.adapters.NativeAdapter;
 import com.superads.android.adsdkdemostandalone.models.DataType;
-import com.superads.android.adsdkdemostandalone.models.NativeData;
+import com.superads.android.adsdkdemostandalone.models.ItemData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,56 +33,59 @@ public class NativeActivity extends BaseActivity {
         reycler = findViewById(R.id.recycler);
         reycler.setHasFixedSize(true);
         reycler.setLayoutManager(new LinearLayoutManager(this));
-        reycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        loadNativeAds();
+    }
+
+    private void loadNativeAds() {
+        NativeAdRequest.Builder builder = new NativeAdRequest.Builder(SuperAds.genRandomPlacementId(), new NativeAdRequest.OnNativeAdLoadedListener() {
+            @Override
+            public void onNativeAdLoaded(NativeAd nativeAd) {
+                refreshRecycleView(nativeAd);
+            }
+        });
+
+        final NativeAdLoader nativeAd = new NativeAdLoader(NativeActivity.this);
+        nativeAd.loadAd(builder.build(), new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                Log.i("NativeAdapter", "native ad loaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.e("NativeAdapter", "error generating ad, error code=" + errorCode);
+            }
+        });
+    }
+
+    private void refreshRecycleView(NativeAd nativeAd) {
+        DataType dataType = DataType.NATIVE_BANNER;
         if (getIntent().hasExtra("adType")) {
-            DataType adType = (DataType) getIntent().getSerializableExtra("adType");
-            switch (adType) {
-                case NATIVE_BANNER:
-                    setNativeBannerRecyclerData();
-                    break;
-                case NATIVE_FEED:
-                default:
-                    setNativeFeedRecyclerData();
-                    break;
-            }
-        }
-    }
-
-    private void setNativeBannerRecyclerData() {
-        List<NativeData> items = new ArrayList<>();
-        String[] titles = getResources().getStringArray(R.array.item_titles);
-        String[] descriptions = getResources().getStringArray(R.array.item_descriptions);
-        int adDelimiter = 4;
-        for (int i = 0; i < titles.length; i++) {
-            NativeData data = new NativeData();
-            data.setTitle(titles[i]);
-            data.setDesc(descriptions[i]);
-            data.setType(DataType.NORMAL);
-            items.add(data);
+            dataType = (DataType) getIntent().getSerializableExtra("adType");
         }
 
-        for (int i = 1; i < titles.length; i++) {
-            if (i % adDelimiter == 0) {
-                NativeData data = new NativeData();
-                data.setType(DataType.NATIVE_BANNER);
-                items.add(i, data);
-            }
-        }
-        reycler.setAdapter(new NativeBannerAdapter(items));
-    }
-
-    private void setNativeFeedRecyclerData() {
-        List<NativeData> items = new ArrayList<>();
+        List<ItemData> items = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            NativeData data = new NativeData();
-            data.setType(DataType.NORMAL);
+            ItemData data = new ItemData();
+            data.type = 1;
+            data.data = "txt";
             items.add(data);
         }
-        NativeData data = new NativeData();
-        data.setType(DataType.NATIVE_FEED);
-        items.add(1, data);
-        reycler.setAdapter(new NativeFeedAdapter(items));
-    }
+        ItemData adItem = new ItemData();
+        adItem.type = 100;
+        adItem.data = nativeAd;
+        items.add(3, adItem);
 
+        switch (dataType) {
+            case NATIVE_BANNER:
+                reycler.setAdapter(new NativeAdapter(items));
+                break;
+            case NATIVE_FEED:
+            default:
+                reycler.setAdapter(new NativeAdapter(items));
+                break;
+        }
+    }
 
 }

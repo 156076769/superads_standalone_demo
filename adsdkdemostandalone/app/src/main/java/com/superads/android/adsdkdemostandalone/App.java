@@ -7,8 +7,10 @@ import com.superads.android.adsdk.ads.providers.SuperAdsConfig;
 
 public class App extends Application {
 
-    public static final String publisherId = "1069";
-    public static final String appId = "27";
+//    public static final String publisherId = "1069";
+//    public static final String appId = "27";
+    public static final String publisherId = "1111";
+    public static final String appId = "29";
 
     @Override
     public void onCreate()

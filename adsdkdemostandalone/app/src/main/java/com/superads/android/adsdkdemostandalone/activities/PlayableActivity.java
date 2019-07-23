@@ -1,11 +1,7 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;

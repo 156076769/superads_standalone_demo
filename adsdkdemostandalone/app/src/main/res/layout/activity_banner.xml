@@ -25,11 +25,12 @@
 
     </LinearLayout>
 
-    <FrameLayout
+    <com.superads.android.adsdk.ads.rendering.view.BannerAdView
         android:id="@+id/card_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:visibility="gone"
         android:layout_gravity="center" />
 
 </RelativeLayout>
