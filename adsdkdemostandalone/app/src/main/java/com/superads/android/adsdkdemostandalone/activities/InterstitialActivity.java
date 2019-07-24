@@ -26,6 +26,7 @@ public class InterstitialActivity extends BaseActivity {
 
     private void initLoadAndShowButton() {
         Button btnLoad = findViewById(R.id.btn_load);
+        btnLoad.setText("Load Interstitial");
         btnLoad.setOnClickListener(view -> {
             AdRequest.Builder builder = new AdRequest.Builder(SuperAds.genRandomPlacementId());
             this.interstitialAd = new InterstitialAdLoader(this);
