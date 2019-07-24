@@ -1,10 +1,12 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.superads.android.adsdk.ads.c.a;
 import com.superads.android.adsdk.ads.providers.SuperAds;
 import com.superads.android.adsdk.ads.providers.models.NativeAd;
 import com.superads.android.adsdk.ads.providers.models.NativeAdRequest;
@@ -41,7 +43,14 @@ public class NativeActivity extends BaseActivity {
         NativeAdRequest.Builder builder = new NativeAdRequest.Builder(SuperAds.genRandomPlacementId(), new NativeAdRequest.OnNativeAdLoadedListener() {
             @Override
             public void onNativeAdLoaded(NativeAd nativeAd) {
-                refreshRecycleView(nativeAd);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshRecycleView(nativeAd);
+                    }
+                }, 3000);
+
             }
         });
 
@@ -55,6 +64,18 @@ public class NativeActivity extends BaseActivity {
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 Log.e("NativeAdapter", "error generating ad, error code=" + errorCode);
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+                Log.i("NativeAdapter", "onAdClicked");
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+                Log.i("NativeAdapter", "onAdImpression");
             }
         });
     }
