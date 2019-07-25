@@ -2,6 +2,7 @@ package com.superads.android.adsdkdemostandalone.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,7 +14,6 @@ import com.superads.android.adsdk.ads.rendering.view.AdListener;
 import com.superads.android.adsdk.ads.rendering.view.NativeAdLoader;
 import com.superads.android.adsdkdemostandalone.R;
 import com.superads.android.adsdkdemostandalone.adapters.NativeAdapter;
-import com.superads.android.adsdkdemostandalone.models.DataType;
 import com.superads.android.adsdkdemostandalone.models.ItemData;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class NativeActivity extends BaseActivity {
         reycler = findViewById(R.id.recycler);
         reycler.setHasFixedSize(true);
         reycler.setLayoutManager(new LinearLayoutManager(this));
-
+        reycler.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         loadNativeAds();
     }
 
@@ -80,31 +80,33 @@ public class NativeActivity extends BaseActivity {
     }
 
     private void refreshRecycleView(NativeAd nativeAd) {
-        DataType dataType = DataType.NATIVE_BANNER;
-        if (getIntent().hasExtra("adType")) {
-            dataType = (DataType) getIntent().getSerializableExtra("adType");
-        }
-
         List<ItemData> items = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             ItemData data = new ItemData();
-            data.type = 1;
+            data.type = ItemData.Type.NORMAL;
             data.data = "txt";
             items.add(data);
         }
-        ItemData adItem = new ItemData();
-        adItem.type = 100;
-        adItem.data = nativeAd;
-        items.add(3, adItem);
 
+        int dataType = getIntent().getIntExtra("nativeAdType", 1);
         switch (dataType) {
-            case NATIVE_BANNER:
+            case 1: {
+                ItemData adItem = new ItemData();
+                adItem.type = ItemData.Type.NATIVE_AD_BANNER;
+                adItem.data = nativeAd;
+                items.add(3, adItem);
                 reycler.setAdapter(new NativeAdapter(items));
-                break;
-            case NATIVE_FEED:
-            default:
+            }
+            break;
+            case 2:
+            default: {
+                ItemData adItem = new ItemData();
+                adItem.type = ItemData.Type.NATIVE_AD_FEED;
+                adItem.data = nativeAd;
+                items.add(3, adItem);
                 reycler.setAdapter(new NativeAdapter(items));
-                break;
+            }
+            break;
         }
     }
 

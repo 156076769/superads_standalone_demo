@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.superads.android.adsdk.ads.providers.models.NativeAd;
 import com.superads.android.adsdkdemostandalone.R;
 
-public class NativeAdViewHolder extends RecyclerView.ViewHolder {
+public class NativeBannerAdViewHolder extends RecyclerView.ViewHolder {
     private ViewGroup adContainer;
     private ViewGroup adView;
 
@@ -18,9 +18,8 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
     private TextView descriptionsTextView;
     private TextView callToActionTextView;
     private ImageView iconImageView;
-    private ImageView bigImageImageView;
 
-    public NativeAdViewHolder(@NonNull View itemView, View adView) {
+    public NativeBannerAdViewHolder(@NonNull View itemView, View adView) {
         super(itemView);
 
         this.adContainer = itemView.findViewById(R.id.adContainer);
@@ -31,7 +30,6 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
         this.descriptionsTextView = itemView.findViewById(R.id.ad_txt_description);
         this.callToActionTextView = itemView.findViewById(R.id.ad_txt_cta);
         this.iconImageView = itemView.findViewById(R.id.ad_img_icon);
-        this.bigImageImageView = itemView.findViewById(R.id.ad_img);
     }
 
     public void bindData(NativeAd nativeAd) {
@@ -39,7 +37,6 @@ public class NativeAdViewHolder extends RecyclerView.ViewHolder {
         nativeAd.renderDesc(descriptionsTextView);
         nativeAd.renderCta(callToActionTextView);
         nativeAd.renderIcon(iconImageView);
-        nativeAd.renderBigImgUrl(bigImageImageView);
         nativeAd.registerViewForInteraction(adView);
     }
 }

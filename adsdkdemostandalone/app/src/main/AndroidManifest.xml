@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".activities.PlayableExamplesActivity"></activity>
+        <activity android:name=".activities.PlayableExamplesActivity" />
         <activity android:name=".activities.NativeActivity" />
         <activity android:name=".activities.NativeExamplesActivity" />
         <activity android:name=".activities.BannerActivity" />
