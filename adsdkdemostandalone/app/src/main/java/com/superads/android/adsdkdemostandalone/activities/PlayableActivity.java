@@ -1,6 +1,5 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -8,7 +7,7 @@ import android.webkit.WebView;
 
 import com.superads.android.adsdkdemostandalone.R;
 
-public class PlayableActivity extends Activity {
+public class PlayableActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.superads.android.adsdk.ads.c.a;
 import com.superads.android.adsdk.ads.providers.SuperAds;
 import com.superads.android.adsdk.ads.providers.models.NativeAd;
 import com.superads.android.adsdk.ads.providers.models.NativeAdRequest;

@@ -1,6 +1,5 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +9,7 @@ import android.widget.Toast;
 
 import com.superads.android.adsdkdemostandalone.R;
 
-public class PlayableExamplesActivity extends Activity {
+public class PlayableExamplesActivity extends BaseActivity {
 
     Class target;
     Intent intent;
