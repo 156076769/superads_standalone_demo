@@ -94,7 +94,7 @@ public class NativeActivity extends BaseActivity {
                 ItemData adItem = new ItemData();
                 adItem.type = ItemData.Type.NATIVE_AD_BANNER;
                 adItem.data = nativeAd;
-                items.add(3, adItem);
+                items.add(1, adItem);
                 reycler.setAdapter(new NativeAdapter(items));
             }
             break;
@@ -103,7 +103,7 @@ public class NativeActivity extends BaseActivity {
                 ItemData adItem = new ItemData();
                 adItem.type = ItemData.Type.NATIVE_AD_FEED;
                 adItem.data = nativeAd;
-                items.add(3, adItem);
+                items.add(1, adItem);
                 reycler.setAdapter(new NativeAdapter(items));
             }
             break;

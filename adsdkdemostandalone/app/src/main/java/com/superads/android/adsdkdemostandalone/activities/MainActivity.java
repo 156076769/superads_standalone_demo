@@ -57,7 +57,7 @@ public class MainActivity extends BaseActivity {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             View v = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.item_view, viewGroup, false);
+                    .inflate(R.layout.main_list_item, viewGroup, false);
             return new MyViewHolder(v);
         }
 
@@ -74,17 +74,21 @@ public class MainActivity extends BaseActivity {
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv;
+        private TextView tv1;
+        private TextView tv2;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv = itemView.findViewById(R.id.tv1);
+            tv1 = itemView.findViewById(R.id.tv1);
+            tv2 = itemView.findViewById(R.id.tv2);
         }
 
         Class target;
         Intent intent;
         public void bindData(int i) {
-            tv.setText(data[i]);
+            tv1.setText(data[i]);
+            tv2.setText(desc[i]);
+
             target = null;
             if (i == 0) {
                 target = PlayableExamplesActivity.class;
@@ -101,8 +105,12 @@ public class MainActivity extends BaseActivity {
             } else if (i == 4) {
                 target = BannerActivity.class;
                 intent = new Intent(MainActivity.this, target);
+            } else if (i == 5) {
+                target = AboutActivity.class;
+                intent = new Intent(MainActivity.this, target);
+                //tv.setTextColor(getResources().getColor(R.color.colorAccent));
             }
-            tv.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (intent != null) {
@@ -114,6 +122,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    String[] data = {"Playable", "Video", "Native", "Interstitial", "Banner", "", "Contact: monetize@superads.cn"};
-
+    String[] data = {"Playable", "Video", "Native", "Interstitial", "Banner", "About SuperADS", "Contact: monetize@superads.cn"};
+    String[] desc = {"Full Screen ads. Interactive ad experience", "Full screen ads. Video", "In-content ads that blend in seamlessly", "Full screen ads. Graphic", "320*50 Classic banner ads", "", ""};
 }

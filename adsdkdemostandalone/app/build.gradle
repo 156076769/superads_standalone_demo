@@ -9,8 +9,27 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
-
+    signingConfigs {
+        release {
+            storeFile file('D:\\work\\projects\\superads-shop\\shopkey.jks')
+            storePassword 'android'
+            keyPassword 'android'
+            keyAlias = 'shopkey'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            //Zip代码压缩优化
+            zipAlignEnabled true
+            //移除无用资源
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -28,7 +47,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
 
     //SuperADS广告SDK需要的
-    implementation 'com.superads.android:adsdk:0.1.2'
+    implementation 'com.superads.android:adsdk:0.1.3'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
