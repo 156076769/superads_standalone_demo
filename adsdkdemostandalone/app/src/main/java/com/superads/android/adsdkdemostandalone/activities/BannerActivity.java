@@ -3,12 +3,12 @@ package com.superads.android.adsdkdemostandalone.activities;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.superads.android.adsdk.ads.providers.SuperAds;
-import com.superads.android.adsdk.ads.providers.models.AdRequest;
-import com.superads.android.adsdk.ads.rendering.view.AdListener;
-import com.superads.android.adsdk.ads.rendering.view.BannerAdView;
+import com.aitype.android.adsdk.ads.providers.models.AdRequest;
+import com.aitype.android.adsdk.ads.rendering.view.AdListener;
+import com.aitype.android.adsdk.ads.rendering.view.AdView;
 import com.superads.android.adsdkdemostandalone.R;
 
 public class BannerActivity extends BaseActivity {
@@ -23,13 +23,15 @@ public class BannerActivity extends BaseActivity {
 
     private void initLoadAndShowBannerButton() {
         Button btnBanner = findViewById(R.id.btn_load);
+        final ViewGroup bannerContainer = findViewById(R.id.card_banner);
         btnBanner.setOnClickListener(view -> {
-            final BannerAdView bannerAdView = findViewById(R.id.card_banner);
-            AdRequest.Builder builder = new AdRequest.Builder(SuperAds.genRandomPlacementId());
-            bannerAdView.loadAd(builder.build(), new AdListener() {
+            final AdView adView = new AdView(this);
+            AdRequest.Builder builder = new AdRequest.Builder("xxx_xxx_xxx");
+            adView.loadAd(builder.build(), new AdListener() {
                 @Override
                 public void onAdLoaded() {
-                    bannerAdView.setVisibility(View.VISIBLE);
+                    bannerContainer.addView(adView);
+                    bannerContainer.setVisibility(View.VISIBLE);
                 }
 
                 @Override

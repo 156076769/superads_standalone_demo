@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.superads.android.adsdk.ads.providers.models.NativeAd;
 import com.superads.android.adsdkdemostandalone.R;
 import com.superads.android.adsdkdemostandalone.models.ItemData;
 import com.superads.android.adsdkdemostandalone.viewholders.ItemViewHolder;
@@ -57,15 +56,16 @@ public class NativeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ItemData data = list.get(position);
-        if (list.get(position).type.equals(ItemData.Type.NATIVE_AD_BANNER)) {
-            NativeAd nativeAd = (NativeAd)data.data;
-            NativeBannerAdViewHolder nativeAdViewHolder = (NativeBannerAdViewHolder)holder;
-            nativeAdViewHolder.bindData(nativeAd);
-        } else if (list.get(position).type.equals(ItemData.Type.NATIVE_AD_FEED)) {
-            NativeAd nativeAd = (NativeAd)data.data;
-            NativeFeedAdViewHolder nativeAdViewHolder = (NativeFeedAdViewHolder)holder;
-            nativeAdViewHolder.bindData(nativeAd);
-        } else {
+//        if (list.get(position).type.equals(ItemData.Type.NATIVE_AD_BANNER)) {
+//            NativeAd nativeAd = (NativeAd)data.data;
+//            NativeBannerAdViewHolder nativeAdViewHolder = (NativeBannerAdViewHolder)holder;
+//            nativeAdViewHolder.bindData(nativeAd);
+//        } else if (list.get(position).type.equals(ItemData.Type.NATIVE_AD_FEED)) {
+//            NativeAd nativeAd = (NativeAd)data.data;
+//            NativeFeedAdViewHolder nativeAdViewHolder = (NativeFeedAdViewHolder)holder;
+//            nativeAdViewHolder.bindData(nativeAd);
+//        } else
+            {
             String txt = (String) data.data;
             ((ItemViewHolder) holder).bindData(txt);
         }

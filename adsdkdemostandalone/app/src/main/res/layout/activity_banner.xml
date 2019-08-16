@@ -25,7 +25,7 @@
 
     </LinearLayout>
 
-    <com.superads.android.adsdk.ads.rendering.view.BannerAdView
+    <FrameLayout
         android:id="@+id/card_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

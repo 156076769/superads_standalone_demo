@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.superads.android.adsdk.ads.providers.models.NativeAd;
 import com.superads.android.adsdkdemostandalone.R;
 
 public class NativeBannerAdViewHolder extends RecyclerView.ViewHolder {
@@ -32,11 +31,11 @@ public class NativeBannerAdViewHolder extends RecyclerView.ViewHolder {
         this.iconImageView = itemView.findViewById(R.id.ad_img_icon);
     }
 
-    public void bindData(NativeAd nativeAd) {
-        nativeAd.renderTitle(titleTextView);
-        nativeAd.renderDesc(descriptionsTextView);
-        nativeAd.renderCta(callToActionTextView);
-        nativeAd.renderIcon(iconImageView);
-        nativeAd.registerViewForInteraction(adView);
-    }
+//    public void bindData(NativeAd nativeAd) {
+//        nativeAd.renderTitle(titleTextView);
+//        nativeAd.renderDesc(descriptionsTextView);
+//        nativeAd.renderCta(callToActionTextView);
+//        nativeAd.renderIcon(iconImageView);
+//        nativeAd.registerViewForInteraction(adView);
+//    }
 }

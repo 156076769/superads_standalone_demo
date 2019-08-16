@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.superads.android.adsdk.ads.providers.models.NativeAd;
 import com.superads.android.adsdkdemostandalone.R;
 
 public class NativeFeedAdViewHolder extends RecyclerView.ViewHolder {
@@ -34,12 +33,12 @@ public class NativeFeedAdViewHolder extends RecyclerView.ViewHolder {
         this.bigImageImageView = itemView.findViewById(R.id.ad_img);
     }
 
-    public void bindData(NativeAd nativeAd) {
-        nativeAd.renderTitle(titleTextView);
-        nativeAd.renderDesc(descriptionsTextView);
-        nativeAd.renderCta(callToActionTextView);
-        nativeAd.renderIcon(iconImageView);
-        nativeAd.renderBigImgUrl(bigImageImageView);
-        nativeAd.registerViewForInteraction(adView);
-    }
+//    public void bindData(NativeAd nativeAd) {
+//        nativeAd.renderTitle(titleTextView);
+//        nativeAd.renderDesc(descriptionsTextView);
+//        nativeAd.renderCta(callToActionTextView);
+//        nativeAd.renderIcon(iconImageView);
+//        nativeAd.renderBigImgUrl(bigImageImageView);
+//        nativeAd.registerViewForInteraction(adView);
+//    }
 }
