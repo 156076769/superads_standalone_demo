@@ -1,20 +1,12 @@
 package com.superads.android.adsdkdemostandalone.activities;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
-import com.aitype.android.adsdk.ads.providers.SuperAds;
-import com.aitype.android.adsdk.ads.providers.models.NativeAdRequest;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.superads.android.adsdkdemostandalone.R;
-import com.superads.android.adsdkdemostandalone.adapters.NativeAdapter;
-import com.superads.android.adsdkdemostandalone.models.ItemData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class NativeActivity extends BaseActivity {
 
