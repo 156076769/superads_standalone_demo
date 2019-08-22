@@ -17,13 +17,13 @@ public class NativeExamplesActivity extends BaseActivity {
 
     }
     private void createAndShowNativeBanner() {
-        Intent intent = new Intent(this,NativeActivity.class);
+        Intent intent = new Intent(this,NativeActivity2.class);
         intent.putExtra("nativeAdType", 1); //1表示原生Banner广告
         startActivity(intent);
     }
 
     private void createAndShowFeedNative() {
-        Intent intent = new Intent(this,NativeActivity.class);
+        Intent intent = new Intent(this,NativeActivity2.class);
         intent.putExtra("nativeAdType", 2); //2表示原生Feed广告
         startActivity(intent);
     }

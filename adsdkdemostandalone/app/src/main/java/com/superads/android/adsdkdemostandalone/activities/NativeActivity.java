@@ -2,9 +2,9 @@ package com.superads.android.adsdkdemostandalone.activities;
 
 import android.os.Bundle;
 
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.superads.android.adsdkdemostandalone.R;
 
@@ -28,7 +28,7 @@ public class NativeActivity extends BaseActivity {
     }
 
     private void loadNativeAds() {
-//        NativeAdRequest.Builder builder = new NativeAdRequest.Builder("xxx", new NativeAdRequest.OnNativeAdLoadedListener() {
+//        NativeAdRequest.Builder builder = new NativeAdRequest.Builder("YOUR_PLACEMENT_ID_HERE", new NativeAdRequest.OnNativeAdLoadedListener() {
 //            @Override
 //            public void onNativeAdLoaded(NativeAd nativeAd) {
 //                Handler handler = new Handler();

@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.aitype.android.adsdk.ads.providers.SuperAds;
 import com.aitype.android.adsdk.ads.providers.models.AdRequest;
+import com.aitype.android.adsdk.ads.providers.models.VideoSize;
 import com.aitype.android.adsdk.ads.rendering.view.AdListener;
 import com.aitype.android.adsdk.ads.rendering.view.VideoAd;
 import com.superads.android.adsdkdemostandalone.R;
@@ -28,7 +28,8 @@ public class VideoActivity extends BaseActivity {
         Button btnLoad = findViewById(R.id.btn_load);
         btnLoad.setText("Load Video");
         btnLoad.setOnClickListener(view -> {
-            AdRequest.Builder builder = new AdRequest.Builder("xxx");
+            AdRequest.Builder builder = new AdRequest.Builder("YOUR_PLACEMENT_ID_HERE");
+            builder.adSize(VideoSize.VIDEO_560x320);
             this.videoAdLoader = new VideoAd(this);
             videoAdLoader.loadAd(builder.build(), new AdListener() {
                 @Override

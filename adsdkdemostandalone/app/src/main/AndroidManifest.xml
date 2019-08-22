@@ -14,12 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:appComponentFactory"
-        android:appComponentFactory="whateverString"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
         <activity android:name=".activities.PlayableExamplesActivity" />
         <activity android:name=".activities.NativeActivity" />
+        <activity android:name=".activities.NativeActivity2" />
         <activity android:name=".activities.NativeExamplesActivity" />
         <activity android:name=".activities.BannerActivity" />
         <activity android:name=".activities.InterstitialActivity" />

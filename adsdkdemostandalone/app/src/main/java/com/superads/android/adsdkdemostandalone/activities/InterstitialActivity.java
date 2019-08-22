@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.aitype.android.adsdk.ads.providers.models.AdRequest;
+import com.aitype.android.adsdk.ads.providers.models.InterstitialSize;
 import com.aitype.android.adsdk.ads.rendering.view.AdListener;
 import com.aitype.android.adsdk.ads.rendering.view.InterstitialAd;
 import com.superads.android.adsdkdemostandalone.R;
@@ -27,7 +28,8 @@ public class InterstitialActivity extends BaseActivity {
         Button btnLoad = findViewById(R.id.btn_load);
         btnLoad.setText("Load Interstitial");
         btnLoad.setOnClickListener(view -> {
-            AdRequest.Builder builder = new AdRequest.Builder("xxx");
+            AdRequest.Builder builder = new AdRequest.Builder("YOUR_PLACEMENT_ID_HERE");
+            builder.adSize(InterstitialSize.TABLET_INTERSTITIAL_1024x768);
             this.interstitialAd = new InterstitialAd(this);
             interstitialAd.loadAd(builder.build(), new AdListener() {
                 @Override

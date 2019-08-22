@@ -16,6 +16,7 @@ public class App extends Application {
     {
         super.onCreate();
 
-        SuperAds.init(this, publisherId);
+        SuperAds.debug = true;
+        SuperAds.init(this, publisherId, appId);
     }
 }

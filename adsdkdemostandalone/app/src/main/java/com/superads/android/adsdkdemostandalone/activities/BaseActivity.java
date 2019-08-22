@@ -2,7 +2,7 @@ package com.superads.android.adsdkdemostandalone.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.core.content.ContextCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Window;
 import android.view.WindowManager;
 

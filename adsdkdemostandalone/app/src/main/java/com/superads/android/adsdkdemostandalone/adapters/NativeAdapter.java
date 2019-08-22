@@ -4,8 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 
 import com.superads.android.adsdkdemostandalone.R;
 import com.superads.android.adsdkdemostandalone.models.ItemData;
@@ -21,6 +21,7 @@ public class NativeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final int NORMAL = 0;
     private final int NATIVE_AD_BANNER = 1;
     private final int NATIVE_AD_FEED = 2;
+
     public NativeAdapter(List<ItemData> items) {
         list = items;
     }
@@ -43,10 +44,10 @@ public class NativeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             View adContainer = LayoutInflater.from(parent.getContext()).inflate(R.layout.superads_native_ad_container, parent, false);
             View adView = LayoutInflater.from(parent.getContext()).inflate(R.layout.superads_native_ad_banner, parent, false);
             return new NativeBannerAdViewHolder(adContainer, adView);
-        }  if (viewType == NATIVE_AD_FEED) {
-                View adContainer = LayoutInflater.from(parent.getContext()).inflate(R.layout.superads_native_ad_container, parent, false);
-                View adView = LayoutInflater.from(parent.getContext()).inflate(R.layout.superads_native_ad_feed, parent, false);
-                return new NativeFeedAdViewHolder(adContainer, adView);
+        } else if (viewType == NATIVE_AD_FEED) {
+            View adContainer = LayoutInflater.from(parent.getContext()).inflate(R.layout.superads_native_ad_container, parent, false);
+            View adView = LayoutInflater.from(parent.getContext()).inflate(R.layout.superads_native_ad_feed, parent, false);
+            return new NativeFeedAdViewHolder(adContainer, adView);
         } else {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.list_item, parent, false);
@@ -66,7 +67,7 @@ public class NativeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 //            NativeFeedAdViewHolder nativeAdViewHolder = (NativeFeedAdViewHolder)holder;
 //            nativeAdViewHolder.bindData(nativeAd);
 //        } else
-            {
+        {
             String txt = (String) data.data;
             ((ItemViewHolder) holder).bindData(txt);
         }
