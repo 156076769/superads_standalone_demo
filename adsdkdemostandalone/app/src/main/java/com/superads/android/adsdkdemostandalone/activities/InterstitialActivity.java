@@ -6,11 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.aitype.android.adsdk.ads.providers.models.AdRequest;
-import com.aitype.android.adsdk.ads.providers.models.InterstitialSize;
-import com.aitype.android.adsdk.ads.rendering.view.AdListener;
-import com.aitype.android.adsdk.ads.rendering.view.InterstitialAd;
 import com.superads.android.adsdkdemostandalone.R;
+
+import cn.superads.sdk.providers.models.AdRequest;
+import cn.superads.sdk.providers.models.InterstitialSize;
+import cn.superads.sdk.rendering.view.AdListener;
+import cn.superads.sdk.rendering.view.InterstitialAd;
 
 public class InterstitialActivity extends BaseActivity {
 

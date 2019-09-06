@@ -2,7 +2,7 @@ package com.superads.android.adsdkdemostandalone;
 
 import android.app.Application;
 
-import com.aitype.android.adsdk.ads.providers.SuperAds;
+import cn.superads.sdk.providers.SuperAds;
 
 public class App extends Application {
 
@@ -16,7 +16,7 @@ public class App extends Application {
     {
         super.onCreate();
 
-        SuperAds.debug = true;
+        //SuperAds.debug = true;
         SuperAds.init(this, publisherId, appId);
     }
 }

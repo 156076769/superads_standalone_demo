@@ -7,15 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.aitype.android.adsdk.ads.providers.models.NativeAdRequest;
-import com.aitype.android.adsdk.ads.rendering.view.AdListener;
-import com.aitype.android.adsdk.ads.rendering.view.NativeAd;
 import com.superads.android.adsdkdemostandalone.R;
 import com.superads.android.adsdkdemostandalone.models.ItemData;
 import com.superads.android.adsdkdemostandalone.viewholders.ItemViewHolder;
 import com.superads.android.adsdkdemostandalone.viewholders.NativeAdViewHolder2;
 
 import java.util.List;
+
+import cn.superads.sdk.providers.models.NativeAdRequest;
+import cn.superads.sdk.rendering.view.AdListener;
+import cn.superads.sdk.rendering.view.NativeAd;
 
 public class NativeAdapter2 extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

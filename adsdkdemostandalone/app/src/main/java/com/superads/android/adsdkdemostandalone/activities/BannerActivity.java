@@ -6,11 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.aitype.android.adsdk.ads.providers.models.AdRequest;
-import com.aitype.android.adsdk.ads.providers.models.BannerSize;
-import com.aitype.android.adsdk.ads.rendering.view.AdListener;
-import com.aitype.android.adsdk.ads.rendering.view.AdView;
 import com.superads.android.adsdkdemostandalone.R;
+
+import cn.superads.sdk.providers.models.AdRequest;
+import cn.superads.sdk.providers.models.BannerSize;
+import cn.superads.sdk.rendering.view.AdListener;
+import cn.superads.sdk.rendering.view.AdView;
 
 public class BannerActivity extends BaseActivity {
 
