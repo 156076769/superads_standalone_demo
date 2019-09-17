@@ -16,7 +16,8 @@ public class App extends Application {
     {
         super.onCreate();
 
-        //SuperAds.debug = true;
+        SuperAds.debug = true;
+        SuperAds.fakeGEO = "CN";
         SuperAds.init(this, publisherId, appId);
     }
 }

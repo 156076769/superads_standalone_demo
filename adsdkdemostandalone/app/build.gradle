@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
 
     //SuperADS广告SDK需要的
-    implementation 'com.superads.android:adsdk:0.2.4'
+    implementation 'com.superads.android:adsdk:0.2.7'
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 

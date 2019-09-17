@@ -49,6 +49,7 @@ public class NativeAdapter2 extends RecyclerView.Adapter<RecyclerView.ViewHolder
             final View adView = LayoutInflater.from(parent.getContext()).inflate(R.layout.superads_native_ad_banner, null);
             NativeAdRequest.Builder builder = new NativeAdRequest.Builder(adView, "YOUR_PLACEMENT_ID_HERE")
                     .titleTextViewId(R.id.ad_txt_title)
+                    .privacyInformationIconImageId(R.id.privacy_icon_2)
                     .descriptionsTextViewId(R.id.ad_txt_description)
                     .callToActionTextViewId(R.id.ad_txt_cta)
                     .iconImageViewId(R.id.ad_img_icon);

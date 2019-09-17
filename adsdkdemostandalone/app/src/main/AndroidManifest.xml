@@ -23,6 +23,7 @@
         <activity android:name=".activities.BannerActivity" />
         <activity android:name=".activities.InterstitialActivity" />
         <activity android:name=".activities.VideoActivity" />
+        <activity android:name=".activities.RewardedVideoActivity" />
         <activity android:name=".activities.PlayableActivity" />
         <activity android:name=".activities.AboutActivity" />
         <activity

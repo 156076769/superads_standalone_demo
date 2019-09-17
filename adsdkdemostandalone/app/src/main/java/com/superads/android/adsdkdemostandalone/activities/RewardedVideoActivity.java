@@ -11,11 +11,11 @@ import com.superads.android.adsdkdemostandalone.R;
 import cn.superads.sdk.providers.models.AdRequest;
 import cn.superads.sdk.providers.models.VideoSize;
 import cn.superads.sdk.rendering.view.AdListener;
-import cn.superads.sdk.rendering.view.videoviews.VideoAd;
+import cn.superads.sdk.rendering.view.RewardedVideoAd;
 
-public class VideoActivity extends BaseActivity {
+public class RewardedVideoActivity extends BaseActivity {
 
-    private VideoAd videoAdLoader;
+    private RewardedVideoAd videoAdLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +31,11 @@ public class VideoActivity extends BaseActivity {
         btnLoad.setOnClickListener(view -> {
             AdRequest.Builder builder = new AdRequest.Builder("YOUR_PLACEMENT_ID_HERE");
             builder.adSize(VideoSize.VIDEO_1280x720);
-            this.videoAdLoader = new VideoAd(this);
+            this.videoAdLoader = new RewardedVideoAd(this);
             videoAdLoader.loadAd(builder.build(), new AdListener() {
                 @Override
                 public void onAdLoaded() {
-                    Toast.makeText(VideoActivity.this, "video Ad load successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RewardedVideoActivity.this, "video Ad load successfully", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -52,6 +52,10 @@ public class VideoActivity extends BaseActivity {
                 public void onVideoCompleted() {
                 }
 
+                @Override
+                public void onVideoRewarded() {
+                    Log.i("VideoActivity", "**video rewarded!");
+                }
             });
         });
 

@@ -98,15 +98,18 @@ public class MainActivity extends BaseActivity {
                 target = VideoActivity.class;
                 intent = new Intent(MainActivity.this, target);
             } else if (i == 2) {
-                target = NativeExamplesActivity.class;
+                target = VideoActivity.class;
                 intent = new Intent(MainActivity.this, target);
             } else if (i == 3) {
-                target = InterstitialActivity.class;
+                target = NativeExamplesActivity.class;
                 intent = new Intent(MainActivity.this, target);
             } else if (i == 4) {
-                target = BannerActivity.class;
+                target = InterstitialActivity.class;
                 intent = new Intent(MainActivity.this, target);
             } else if (i == 5) {
+                target = BannerActivity.class;
+                intent = new Intent(MainActivity.this, target);
+            } else if (i == 6) {
                 target = AboutActivity.class;
                 intent = new Intent(MainActivity.this, target);
                 //tv.setTextColor(getResources().getColor(R.color.colorAccent));
@@ -123,6 +126,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    String[] data = {"Playable", "Video", "Native", "Interstitial", "Banner", "About SuperADS", "Contact: monetize@superads.cn"};
-    String[] desc = {"Full Screen ads. Interactive ad experience", "Full screen ads. Video", "In-content ads that blend in seamlessly", "Full screen ads. Graphic", "320*50 Classic banner ads", "", ""};
+    String[] data = {"Playable", "Video",  "Rewarded Video", "Native", "Interstitial", "Banner", "About SuperADS", "Contact: monetize@superads.cn"};
+    String[] desc = {"Full Screen ads. Interactive ad experience", "Full screen ads. Video", "Full screen ads. Rewarded Video", "In-content ads that blend in seamlessly", "Full screen ads. Graphic", "320*50 Classic banner ads", "", ""};
 }
